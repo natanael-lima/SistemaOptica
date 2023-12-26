@@ -1,0 +1,140 @@
+﻿<Window x:Class="Vistas.FormCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+        Title="FormCliente" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" Icon="./recursos/logo-ico.ico" Loaded="Window_Loaded">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LibreriaRecursos;component/FormStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+ 
+    <!--Efecto Gradiante-->
+    <Border CornerRadius="10">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,2">
+                <GradientStop Color="#18161F" Offset="0"/>
+                <GradientStop Color="#09070B" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <!--Grid para Header-->
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--Grid para Header-->
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="8"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="CLIENTES"
+                               Foreground="White"
+                               FontSize="20"
+                               FontFamily="Calibri"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               Margin="15,0,0,0"/>
+                <!--Minimizar Ventana-->
+                <Button x:Name="btnMinimize"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click"
+                            Style="{StaticResource MinimizeButtonStyle}">
+                </Button>
+                <!--Cerrar Ventana-->
+                <Button x:Name="btnClose"                          
+                            Grid.Column="2"
+                            Click="btnClose_Click"
+                            Style="{StaticResource CloseButtonStyle}">
+                </Button>
+            </Grid>
+            <!--Grid para Contenido-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <!--Columna para Form-->
+                    <ColumnDefinition Width="336*" />
+                    <!--Columna para Tabla  -->
+                    <ColumnDefinition Width="800"/>
+                </Grid.ColumnDefinitions>
+                <Border CornerRadius="0,0,0,10" Grid.Column="0" Background="#18161F">
+                    <Grid >
+                        <TextBox Margin="25,18,30,576" Name="txtId"  VerticalContentAlignment="Center" Visibility="Hidden">
+                            <TextBox.Text>
+                                <Binding Path="Cli_Id" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" />
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBlock Text="Nombre:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="25,84,160,500" />
+                        <TextBox Margin="25,101,30,0" Name="txtNombre"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}">
+                            <TextBox.Text>
+                                <Binding Path="Cli_Nombre" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True"/>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBlock Text="Apellido:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="25,160,160,423" />
+                        <TextBox Margin="25,178,30,0" Name="txtApellido"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}">
+                            <TextBox.Text>
+                                <Binding Path="Cli_Apellido" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True"/>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBlock Text="DNI:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray"   Margin="25,237,160,346" />
+                        <TextBox Margin="25,255,30,0" Name="txtDNI"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}">
+                            <TextBox.Text>
+                                <Binding Path="Cli_DNI" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" />
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBlock Text="Teléfono:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="25,304,160,279" />
+                        <TextBox Margin="25,322,30,0" Name="txtTelefono"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}">
+                            <TextBox.Text>
+                                <Binding Path="Cli_Telefono" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" />
+                            </TextBox.Text>
+                        </TextBox>
+                        
+                        <TextBlock FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGoldenrod" Margin="25,381,160,217" Text="Buscar DNI para Modificar/Eliminar:" />
+                        <TextBox Margin="25,399,30,0" Name="textBuscar" Style="{StaticResource TextoBoxStyle}" Text="{Binding Path=DNI, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextChanged="textBuscar_TextChanged" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="53,440,49,125" Width="272">
+                            <Button Margin="0,0,5,0" Content="Salir"  Name="btnSalir" Style="{StaticResource BotonGlobalStyle}" Width="80" Click="btnSalir_Click" />
+                            <Button Margin="0,0,5,0" Name="btnEditar" Style="{StaticResource BotonEditarStyle}" Click="btnEditar_Click" />
+                            <Button Name="btnEliminar" Style="{StaticResource BotonEliminarStyle}" Click="btnEliminar_Click" Height="31" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="0,0,10,0" Grid.Column="1" Background="#23232D">
+                    <Grid  >
+                        <!--Espacio para las tabla de datos-->
+                        <!--v2 para mostrar <DataGrid x:Name="dataGridClientes" AutoGenerateColumns="True" Height="400" Width="760"/> -->
+                        <DataGrid x:Name="dataGridClientes" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Width="760" Margin="19,84,19,36" Style="{StaticResource DataGridStyle}">
+                            <DataGrid.ColumnHeaderStyle>
+                                <StaticResource ResourceKey="DataGridColumnHeaderStyle"/>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Cli_Id}" Width="1"/>
+                                <DataGridTextColumn Header="Nombre" Binding="{Binding Cli_Nombre}" Width="1*"/>
+                                <DataGridTextColumn Header="Apellido" Binding="{Binding Cli_Apellido}" Width="1*"/>
+                                <DataGridTextColumn Header="DNI" Binding="{Binding Cli_DNI}" Width="1*"/>
+                                <DataGridTextColumn Header="Telefono" Binding="{Binding Cli_Telefono}" Width="1*"/>
+                            </DataGrid.Columns>
+                            <DataGrid.CellStyle>
+                                <StaticResource ResourceKey="DataGridCellStyle"/>
+                            </DataGrid.CellStyle>
+                        </DataGrid>
+                        <!--Botones del Form-->
+                        <TextBox Margin="114,50,165,0" TextChanged="TxtBusqueda_TextChanged" Name="txtBusqueda" Style="{StaticResource TextoBoxStyle}" Height="26" />
+                        <Button Margin="639,22,0,575" Name="btnActualizar" Style="{StaticResource BotonActualizarStyle}" Click="btnActualizar_Click" Width="44" />
+                        <Button Margin="689,21,0,576" Name="btnAgregar" Style="{StaticResource BotonAgregarStyle}" Click="btnAgregar_Click" />
+                        <TextBlock FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="19,56,680,551" Text="Filtrar por Nombre:" />
+                    </Grid>
+                </Border>
+                        
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

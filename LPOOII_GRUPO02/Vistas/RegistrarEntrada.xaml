@@ -1,0 +1,104 @@
+﻿<Window x:Class="Vistas.RegistrarEntrada"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RegistrarEntrada" Height="650" Width="400"
+        xmlns:local="clr-namespace:LibreriaRecursos;assembly=LibreriaRecursos"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" Icon="./recursos/logo-ico.ico" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <local:ConversorDeEstados x:Key="ConversorDeEstados" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LibreriaRecursos;component/FormStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!--Efecto Gradiante-->
+    <Border CornerRadius="10" BorderBrush="Goldenrod" BorderThickness="2">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,2">
+                <GradientStop Color="#2A2831" Offset="0"/>
+                <GradientStop Color="#2A2831" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.Resources>
+                <!-- Definicion del x:Key para poder realizar la conexion con el XML  -->
+                <XmlDataProvider x:Key="Tiempos" Source="/Tiempos.xml" XPath="/tiempos" />
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <!--Grid para Header-->
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--Grid para Header-->
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="8"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="txtTitle"
+                               Foreground="White"
+                               FontSize="20"
+                               FontFamily="Calibri"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               Margin="15,0,0,0"/>
+                <!--Minimizar Ventana-->
+                <Button x:Name="btnMinimize"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click"
+                            Style="{StaticResource MinimizeButtonStyle}">
+                </Button>
+                <!--Cerrar Ventana-->
+                <Button x:Name="btnClose"                          
+                            Grid.Column="2"
+                            Click="btnClose_Click"
+                            Style="{StaticResource CloseButtonStyle}">
+                </Button>
+            </Grid>
+            <!--Grid para Contenido-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <!--Columna para Form-->
+                    <ColumnDefinition Width="336*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Margin="0,0,0,12" Text="Clientes:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Width="328" />
+                    <ComboBox Margin="0,0,0,12" Name="cmbClientes" VerticalContentAlignment="Center" Style="{StaticResource ComboBoxStyle}">
+                    </ComboBox>
+                    
+                    
+                    <TextBlock Margin="0,0,0,12" Text="Patente:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Width="327" />
+                    <TextBox Margin="0,0,0,12" Name="txtPatente"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}" Width="328" />
+
+                    <TextBlock Margin="0,0,0,12" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Text="Tipo de Vehiculos:" Width="328" />
+                    <ComboBox Margin="0,0,0,12" Name="cmbTVehiculos" Style="{StaticResource ComboBoxStyle}" VerticalContentAlignment="Center" SelectionChanged="cmbTVehiculos_SelectionChanged" />
+                    
+                    <TextBlock Margin="0,0,0,12" Text="Tarifa:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Width="327" />
+                    <TextBox Margin="0,0,0,12" Name="txtTarifa"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}" Width="328" />
+                    <Label Margin="0,0,0,12" Name="txtTime" Content="Tiempo de estadia" Height="28" Foreground="DarkGray" FontWeight="Bold" Width="123" />
+                    <!-- Realiza la conexion con el archivo XML para llenar el ComboBox, con xPath especifica que elementos traer del XML -->
+                    <ComboBox Margin="0,0,0,12" ItemsSource="{Binding Source={StaticResource Tiempos}, XPath=minutos}" Height="23" Name="cmbTime" Width="120" SelectedIndex="0" >
+                    </ComboBox>
+                        <TextBlock Margin="0,0,0,12" Name="txtBFecha" Text="Fecha y Hora de Ingreso:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Width="327" />
+                        <TextBox Margin="0,0,0,12" Name="txtFecha"   HorizontalAlignment="Left" Width="327" Style="{StaticResource TextoBoxStyle}" />
+                    <TextBlock Margin="0,0,0,12" Name="txtBTiempoTrans" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Text="TiempoTranscurrido:" Width="327" />
+                    <TextBox Margin="0,0,0,12" Name="txtTiempoTrans" Style="{StaticResource TextoBoxStyle}" VerticalContentAlignment="Center" Width="328" />
+
+                    <TextBlock Name="txtBTotal" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Text="Total:" Width="327" />
+                    <TextBox Name="txtTotal" Style="{StaticResource TextoBoxStyle}" VerticalContentAlignment="Center" Width="328" />
+                    <Button Margin="0,20,5,0" Content="Registrar Entrada" Name="btn" Style="{StaticResource BotonGlobalStyle}" Width="134" Click="btn_Click" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

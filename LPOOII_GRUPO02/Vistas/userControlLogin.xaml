@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Vistas.userControlLogin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="320">
+    
+    <StackPanel Width="200" Grid.Row="2" Orientation="Vertical" Margin="0,35,0,0">
+            <Image Source="/recursos/logotipo-white.png"
+                           Width="100" Height="85"/>
+            <TextBlock Text="GRUPO 02"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Medium"
+                               FontFamily="Franklin Gothic"
+                               HorizontalAlignment="Center"/>
+            <TextBlock Text="Bienvenido/a al sistema de estacionamiento de vehiculos."
+                               Foreground="LightGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Calibri"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Margin="0,5,0,0"/>
+            <TextBlock Text="Username"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Calibri"                             
+                               Margin="0,35,0,0"/>
+            <TextBox x:Name="txtUser"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/recursos/user.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                </TextBox.Background>
+            </TextBox>
+
+            <TextBlock Text="Password"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Calibri"                             
+                               Margin="0,35,0,0"/>
+            <PasswordBox x:Name="txtPassword"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+                <PasswordBox.Background>
+                    <ImageBrush ImageSource="/recursos/llave.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+
+        <Button Content="INICIAR SESION" Name="btnLogin" Click="btnLogin_Click" Style="{StaticResource LoginButtonStyle}" Height="40" />
+
+
+    </StackPanel>
+</UserControl>

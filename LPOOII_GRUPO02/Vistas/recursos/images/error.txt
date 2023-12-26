@@ -1,0 +1,1 @@
+An attempt to attach an auto-named database for file C:\Users\admin\Documents\Visual Studio 2010\Projects\LPOOII_GRUPO02\playa.mdf failed. A database with the same name exists, or specified file cannot be opened, or it is located on UNC share.

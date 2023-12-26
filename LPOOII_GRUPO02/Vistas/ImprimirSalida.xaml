@@ -1,0 +1,35 @@
+﻿<Window x:Class="Vistas.ImprimirSalida"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ImprimirSalida" Height="600" Width="450">
+    <FixedDocument>
+        <FixedDocument.Pages>
+            <PageContent>
+                <FixedPage>
+                    <Grid>
+                        <StackPanel Margin="10" Background="White">
+                            <TextBlock Name="txtTitle" FontSize="24" FontWeight="Bold" Margin="0,0,0,5" Text="Playa Estacionamiento TPFINAL" />
+                            <TextBlock Name="txtLugar" FontSize="12" Margin="0,0,0,5" Text="Balcarce 200                                                              CUIT:30-12345678-9" />
+                            <TextBlock Name="txtS" FontSize="12" Margin="0,0,0,15" Text="S.S. de Jujuy                                                               IIBB:999" />
+                            <!-- Línea separadora -->
+                            <Border BorderBrush="Black" BorderThickness="0,1,0,1" Margin="0,5,0,5" />
+                            <TextBlock Name="txtTicketID" FontSize="12" FontWeight="Bold" Margin="0,0,0,5" Text="Ticket ID: XXXX" />
+                            <TextBlock Name="txtSector" FontSize="12" Margin="0,0,0,5" Text="Sector: XXXX" />
+                            <TextBlock Name="txtCliente" FontSize="12" Margin="0,5,0,5" Text="Cliente: XXXX" />
+                            <TextBlock Name="txtPatente" FontSize="12" Margin="0,0,0,5" Text="Patente: XXXX" />
+                            <TextBlock Name="txtIngreso" FontSize="12" Margin="0,0,0,5" Text="Ingreso: XXXX" />
+                            <TextBlock Name="txtSalida"  FontSize="12" Margin="0,0,0,5" />
+                            <TextBlock Name="txtTiempoTrans"  FontSize="12" Margin="0,0,0,5" />
+                            <TextBlock Name="txtTV" FontSize="12" Margin="0,0,0,5" Text="TV: XXXX" />
+                            <TextBlock Name="txtTarifa" FontSize="12" Margin="0,0,0,5" Text="Tarifa: XXXX" />
+                            <TextBlock Name="txtTotal"  FontSize="12" Margin="0,0,0,5" />
+                            <!-- Línea separadora -->
+                            <Border BorderBrush="Black" BorderThickness="0,1,0,1" Margin="0,5,0,5" />
+                            <TextBlock Name="txtUsuario" FontSize="12" Margin="0,0,0,5" Text="Usuario: XXXX" />
+                        </StackPanel>
+                    </Grid>
+                </FixedPage>
+            </PageContent>
+        </FixedDocument.Pages>
+    </FixedDocument>
+</Window>

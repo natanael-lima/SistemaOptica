@@ -1,0 +1,78 @@
+﻿<Window x:Class="Vistas.FormVehiculoNuevo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormVehiculoNuevo" Height="480" Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" Icon="./recursos/logo-ico.ico">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LibreriaRecursos;component/FormStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!--Efecto Gradiante-->
+    <Border CornerRadius="10" BorderBrush="Goldenrod" BorderThickness="2">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,2">
+                <GradientStop Color="#2A2831" Offset="0"/>
+                <GradientStop Color="#2A2831" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <!--Grid para Header-->
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--Grid para Header-->
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Nuevo Vehiculo"
+                               Foreground="White"
+                               FontSize="20"
+                               FontFamily="Calibri"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               Margin="15,0,0,0"/>
+            </Grid>
+            <!--Grid para Contenido-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <!--Columna para Form-->
+                    <ColumnDefinition Width="336*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Descripcion:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="29,36,156,352" />
+                <TextBox Margin="29,53,26,0" Name="txtDescripcion"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}">
+                    <TextBox.Text>
+                        <Binding Path="Tv_Descripcion" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True"/>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Text="Tarifa:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="29,112,156,276" />
+                <TextBox Margin="29,130,26,0" Name="txtTarifa"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}">
+                    <TextBox.Text>
+                        <Binding Path="Tv_Tarifa" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True"/>
+                    </TextBox.Text>
+                </TextBox>
+                <Image x:Name="imgFoto" Margin="29,177,208,111" />
+                <Border BorderBrush="White" BorderThickness="1" Margin="29,177,208,111" />
+                <Button Content="Subir Foto" HorizontalAlignment="Right" Name="btnCargarFoto" Style="{StaticResource BotonGlobalStyle}" Width="171" Click="btnCargarFoto_Click" Height="45" VerticalAlignment="Bottom" Margin="0,0,14,185" />
+                <TextBox Margin="210,261,16,0" Name="txtUrl" IsReadOnly="True" Style="{StaticResource TextoBoxStyle}" VerticalContentAlignment="Center" Height="35" />
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="104,351,105,18" Width="165">
+                    <Button Margin="0,0,5,0" Content="Salir"  Name="btnSalir" Style="{StaticResource BotonGlobalStyle}" Width="80" Click="btnSalir_Click" />
+                    <Button Margin="0,0,5,0" Content="Guardar" Name="btnGuardar"  Style="{StaticResource BotonGlobalStyle}" Width="80" Click="btnGuardar_Click"/>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
+

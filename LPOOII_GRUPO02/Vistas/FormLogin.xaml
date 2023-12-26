@@ -1,0 +1,77 @@
+﻿<Window x:Class="Vistas.FormLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:UC="clr-namespace:Vistas"
+        Title="FormLogin" Height="480" Width="320"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown" Icon="./recursos/logo-ico.ico">
+    <!-- xmlns:UC="clr-namespace:Vistas" llama al userControl que se encuentra en el proyecto vistas-->
+   
+    <!--Borde Ventana Principal Login-->
+    <Border CornerRadius="10">
+        <!--Imagen para el fondo del Login-->
+        <Border.Background>
+            <ImageBrush ImageSource="/recursos/fondo1.jpg" Stretch="UniformToFill"/>
+        </Border.Background>
+        <!--Efecto Gradiante y Borde Overlay-->
+        <Border CornerRadius="10" Opacity="0.95">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                    <GradientStop Color="#18161F" Offset="0"/>
+                    <GradientStop Color="#09050B" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+                
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!--Header Contenedor-->
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Grid para Header Contenedor-->
+                <Grid Grid.Row="0">
+                    <!--Columnas Botones Header-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="8"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Titulo Ventana Header-->
+                    <TextBlock Text="Iniciar Sesion"
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="Calibri"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="15,0,0,0"/>
+                    <!--Minimizar Login-->
+                    <Button x:Name="btnMinimize"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click"
+                            Style="{StaticResource MinimizeButtonStyle}">
+                    </Button>
+                    <!--Cerrar Login-->
+                    <Button x:Name="btnClose"                          
+                            Grid.Column="2"
+                            Click="btnClose_Click"
+                            Style="{StaticResource CloseButtonStyle}">
+                    </Button>
+                </Grid>
+
+               <!-- Usar doble stack panel uno aqui y otro en el userControl porque si -->
+                <StackPanel Orientation="Vertical"
+                             Margin="0,0,0,0" Width="200" Grid.Row="2">
+                   <!-- User Control, Punto 4 TP2 otra forma de llamar es usando 
+                    <local:userControlLogin/>   
+                    se le poner nombre con x:name para poder trabajar con ese nombre en codigo c#-->
+                <UC:userControlLogin x:Name="userControlLoginn"/>
+                </StackPanel>
+            </Grid>          
+        </Border>
+    </Border>
+</Window>

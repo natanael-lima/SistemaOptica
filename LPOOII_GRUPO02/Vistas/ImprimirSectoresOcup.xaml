@@ -1,0 +1,30 @@
+﻿<Window x:Class="Vistas.ImprimirSectoresOcup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ImprimirSectoresOcup" Height="700" Width="1200">
+    <StackPanel>
+        <FlowDocumentReader Height="500" Width="800" >
+            <FlowDocument Name="DocMain" ColumnWidth="800">
+                <Paragraph>Listado de Sectores Ocupados</Paragraph>
+                <BlockUIContainer>
+                    <ListView x:Name="listaSectoresOcup" ItemsSource="{Binding}" Width="Auto" Height="Auto" HorizontalContentAlignment="Stretch">
+                        <ListView.View>
+                            <GridView >
+                                <GridViewColumn Header="Zona" DisplayMemberBinding="{Binding Sec_Id.Zona_Codigo}" Width="Auto"/>
+                                <GridViewColumn Header="Sector" DisplayMemberBinding="{Binding Sec_Id.Sec_Identificador}" Width="Auto" />
+                                <GridViewColumn Header="Nro. Ticket" DisplayMemberBinding="{Binding User_Password}" Width="Auto" />
+                                <GridViewColumn Header="Fecha de Entrada" DisplayMemberBinding="{Binding T_FechaHoraEnt}" Width="Auto"/>
+                                <GridViewColumn Header="Apellido" DisplayMemberBinding="{Binding Cli_Id.Cli_Apellido}" Width="Auto"/>
+                                <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Cli_Id.Cli_Nombre}" Width="Auto"/>
+                                <GridViewColumn Header="Tipo de Vehiculo" DisplayMemberBinding="{Binding Tv_Id.Tv_Descripcion}" Width="Auto"/>
+                                <GridViewColumn Header="Patente" DisplayMemberBinding="{Binding T_Patente}" Width="Auto"/>
+                                
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentReader>
+        <Button Name="imprimir" Content="Impirmir" Width="200" Click="imprimir_Click" />
+    </StackPanel>
+</Window>

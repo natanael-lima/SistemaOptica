@@ -1,0 +1,27 @@
+﻿<Window x:Class="Vistas.ImprimirFlow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ImprimirFijo" Height="600" Width="600">
+    <StackPanel>
+        <FlowDocumentReader Height="468">
+            <FlowDocument Name="DocMain">
+                <Paragraph>Listado de Usuarios</Paragraph>
+                <BlockUIContainer>
+                    <ListView x:Name="listaUsuarios" ItemsSource="{Binding}" Width="Auto" Height="Auto" HorizontalContentAlignment="Stretch">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=User_Id}" Header="ID" Width="Auto"/>
+                                <GridViewColumn Header="Username" DisplayMemberBinding="{Binding User_Name}" Width="Auto" />
+                                <GridViewColumn Header="Password" DisplayMemberBinding="{Binding User_Password}" Width="Auto" />
+                                <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding User_Nombre}" Width="Auto"/>
+                                <GridViewColumn Header="Apellido" DisplayMemberBinding="{Binding User_Apellido}" Width="Auto" />
+                                <GridViewColumn Header="Rol" DisplayMemberBinding="{Binding User_Rol}" Width="Auto"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentReader>
+        <Button Name="imprimir" Content="Impirmir" Width="200" Click="imprimir_Click" />
+    </StackPanel>
+</Window>

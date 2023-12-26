@@ -1,0 +1,90 @@
+﻿<Window x:Class="Vistas.FormSectores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormSectores" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" Icon="./recursos/logo-ico.ico" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LibreriaRecursos;component/FormStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border CornerRadius="10"                    
+            BorderThickness="0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,2">
+                <GradientStop Color="#18161F" Offset="0"/>
+                <GradientStop Color="#09070B" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+                <Grid.RowDefinitions>
+                    <!--Grid para Header-->
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Grid para Header-->
+                <Grid Grid.Row="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="8"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Sectores Ocupados"
+                               Foreground="White"
+                               FontSize="20"
+                               FontFamily="Calibri"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               Margin="15,0,0,0"/>
+                    <!--Minimizar Ventana-->
+                    <Button x:Name="btnMinimize"
+                            Grid.Column="1"
+                            
+                            Style="{StaticResource MinimizeButtonStyle}" Click="btnMinimize_Click">
+                    </Button>
+                    <!--Cerrar Ventana-->
+                    <Button x:Name="btnClose"                          
+                            Grid.Column="2"
+                            
+                            Style="{StaticResource CloseButtonStyle}" Click="btnClose_Click">
+                    </Button>
+
+
+
+                    
+         </Grid>
+         <Grid Grid.Row="1">
+                <DataGrid x:Name="dataGridSectores" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Height="450" Width="760" Style="{StaticResource DataGridStyle}">
+                    <DataGrid.ColumnHeaderStyle>
+                        <StaticResource ResourceKey="DataGridColumnHeaderStyle"/>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Zona" Binding="{Binding Sec_Id.Zona_Codigo}" Width="1*"/>
+                        <DataGridTextColumn Header="Sector" Binding="{Binding Sec_Id.Sec_Identificador}" Width="1*"/>
+                        <DataGridTextColumn Header="Fecha y Hora de Entrada" Binding="{Binding T_FechaHoraEnt}" Width="1*"/>
+                        <DataGridTextColumn Header="Apellido" Binding="{Binding Cli_Id.Cli_Nombre}" Width="1*"/>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Cli_Id.Cli_Apellido}" Width="1*"/>
+                        <DataGridTextColumn Header="Tipo de Vehiculo" Binding="{Binding Tv_Id.Tv_Descripcion}" Width="1*"/>
+                        <DataGridTextColumn Header="Patente" Binding="{Binding T_Patente}" Width="1*"/>
+                        <DataGridTextColumn Header="Tiempo Transcurrido" Binding="{Binding TiempoTrans}" Width="1*"/>
+
+                    </DataGrid.Columns>
+                    <DataGrid.CellStyle>
+                        <StaticResource ResourceKey="DataGridCellStyle"/>
+                    </DataGrid.CellStyle>
+                </DataGrid>
+                <Button Content="Imprimir" HorizontalAlignment="Center" Margin="518,0,547,53" Style="{StaticResource BotonGlobalStyle}" VerticalAlignment="Bottom" Width="111" Click="Button_Click" />
+            </Grid>
+     </Grid>
+    
+    </Border>
+</Window>

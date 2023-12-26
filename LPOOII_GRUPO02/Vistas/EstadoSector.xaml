@@ -1,0 +1,78 @@
+﻿<Window x:Class="Vistas.EstadoSector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:LibreriaRecursos;assembly=LibreriaRecursos"
+        Title="EstadoSector" Height="600" Width="350"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown" Icon="./recursos/logo-ico.ico">
+    <!--xmlns:local="clr-namespace:LibreriaRecursos;assembly=LibreriaRecursos" 
+    se define esta referencia para poder acceder al metodo ConversorDeEstados o cualquier Clase que este en LibreriaRecursos-->
+    <Window.Resources>
+        <local:ConversorDeEstados x:Key="ConversorDeEstados" />
+    </Window.Resources>
+    <Border CornerRadius="10">
+        <!--Imagen para el fondo del Login-->
+        <Border.Background>
+            <ImageBrush ImageSource="/recursos/fondo1.jpg" Stretch="UniformToFill"/>
+        </Border.Background>
+        <!--Efecto Gradiante y Borde Overlay-->
+        <Border CornerRadius="10" Opacity="0.95">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                    <GradientStop Color="#18161F" Offset="0"/>
+                    <GradientStop Color="#09050B" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.Resources>
+                    <!-- Definicion del x:Key para poder realizar la conexion con el XML  -->
+                    <XmlDataProvider x:Key="Tiempos" Source="Tiempos.xml" XPath="/tiempos" />
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <!--Header Contenedor-->
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Grid para Header Contenedor-->
+                <Grid Grid.Row="0">
+                    <!--Columnas Botones Header-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="8"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Titulo de la ventana-->
+                    <TextBlock Text="Estados de Sector" Foreground="DarkGray" FontSize="20" FontFamily="Calibri" Grid.Column="0" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                    <!--Minimizar Login-->
+                    <Button x:Name="btnMinimize"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click"
+                            Style="{StaticResource MinimizeButtonStyle}">
+                    </Button>
+                    <!--Cerrar Login-->
+                    <Button x:Name="btnClose"                          
+                            Grid.Column="2"
+                            Click="btnClose_Click"
+                            Style="{StaticResource CloseButtonStyle}" HorizontalAlignment="Right" Width="25">
+                    </Button>
+                </Grid>
+
+                <StackPanel Orientation="Vertical" Margin="37,93,37,88" Width="250" Grid.Row="1">
+                    <Label Content="Tiempo de estadia" Height="28" Margin="65,20,0,0" Name="label1" Foreground="DarkGray" FontWeight="Bold" Width="123" HorizontalAlignment="Left" />
+                    <!-- Realiza la conexion con el archivo XML para llenar el ComboBox, con xPath especifica que elementos traer del XML -->
+                    <ComboBox ItemsSource="{Binding Source={StaticResource Tiempos}, XPath=minutos}" Height="23" Margin="0" Name="cmbTime" Width="120" SelectedIndex="0">
+                    </ComboBox>
+                    <!--Se hace una conxion con el ComboBox para convertir el valor seleccionado en un Brush-->
+                    <Rectangle Height="100" Name="rectangle1" Stroke="Black" Width="Auto" Fill="{Binding SelectedValue, ElementName=cmbTime, Converter={StaticResource ConversorDeEstados}}" Margin="39,50,31,23" Grid.Row="1" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Border>
+
+</Window>

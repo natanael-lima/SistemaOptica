@@ -1,0 +1,184 @@
+﻿<Window x:Class="Vistas.FormUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormUsuario" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" Icon="./recursos/logo-ico.ico" Loaded="Window_Loaded"
+        xmlns:svc="clr-namespace:ClaseBase;assembly=ClaseBase" xmlns:my="clr-namespace:Vistas">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                 <ResourceDictionary Source="/LibreriaRecursos;component/FormStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <ObjectDataProvider
+                x:Key="List_Users"
+                ObjectType="{x:Type svc:TrabajarUsuario}"
+                MethodName="traerUsuarios">
+            </ObjectDataProvider>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border CornerRadius="10">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,2">
+                <GradientStop Color="#18161F" Offset="0"/>
+                <GradientStop Color="#09070B" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <!--Grid para Header-->
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--Grid para Header-->
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="8"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="USUARIOS"
+                               Foreground="White"
+                               FontSize="20"
+                               FontFamily="Calibri"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               Margin="15,0,0,0"/>
+                <!--Minimizar Ventana-->
+                <Button x:Name="btnMinimize"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click"
+                            Style="{StaticResource MinimizeButtonStyle}">
+                </Button>
+                <!--Cerrar Ventana-->
+                <Button x:Name="btnClose"                          
+                            Grid.Column="2"
+                            Click="btnClose_Click"
+                            Style="{StaticResource CloseButtonStyle}">
+                </Button>
+            </Grid>
+            <!--Grid para Contenido-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <!--Columna para Form-->
+                    <ColumnDefinition Width="336*" />
+                    <!--Columna para Tabla  -->
+                    <ColumnDefinition Width="800"/>
+                </Grid.ColumnDefinitions>
+                <Border CornerRadius="0,0,0,10" Grid.Column="0" Background="#18161F">
+                    <Grid>
+
+                        <!-- Primera Fila -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,18,0,569">
+                            <Button  Name="btnNavegacionAntFinal" Style="{StaticResource BotonNavegacionStyle}" Margin="0,0,10,0" Click="btnNavegacionAntFinal_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/recursos/anterior-final.png" Width="16" Height="16" Margin="0,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button  Name="btnNavegacionAnt" Style="{StaticResource BotonNavegacionStyle}" Margin="0,0,10,0" Click="btnNavegacionAnt_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/recursos/anterior.png" Width="16" Height="16" Margin="0,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button  Name="btnNavegacionSig" Style="{StaticResource BotonNavegacionStyle}"  Margin="0,0,10,0" Click="btnNavegacionSig_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/recursos/siguiente.png" Width="16" Height="16" Margin="0,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button  Name="btnNavegacionSigFinal" Style="{StaticResource BotonNavegacionStyle}" Margin="0,0,10,0" HorizontalAlignment="Right" Click="btnNavegacionSigFinal_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/recursos/siguiente-final.png" Width="16" Height="16" Margin="0,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <!-- Agrega más botones según sea necesario -->
+                        </StackPanel>
+
+                        <!-- Segunda Fila -->
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="-2,18,-1,0" Width="377">
+                            <Canvas Background="Transparent" Name="canvas_content" DataContext="{Binding Source={StaticResource ResourceKey=List_Users}}" Margin="0,69,0,0">
+                                <TextBlock Text="Apellido:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray"   Margin="25,315,160,268" Canvas.Left="0" Canvas.Top="-80" />
+                                <TextBox Margin="25,333,30,0" Name="txtApellido"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}" Width="328" Canvas.Left="0" Canvas.Top="-80">
+                                    <TextBox.Text>
+                                        <Binding Path="User_Apellido"/>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <TextBlock Text="Nombre:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="25,241,160,342" Canvas.Left="0" Canvas.Top="-71" />
+                                <TextBox Margin="25,259,30,0" Name="txtNombre"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}" Width="328" Canvas.Left="0" Canvas.Top="-71">
+                                    <TextBox.Text>
+                                        <Binding Path="User_Nombre"/>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <TextBlock Text="Password:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="25,170,160,414" Canvas.Left="0" Canvas.Top="-65" />
+                                <TextBox Margin="25,187,30,0" Name="txtPassword"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}" Width="328" Canvas.Left="0" Canvas.Top="-65">
+                                    <TextBox.Text>
+                                        <Binding Path="User_Password"/>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <TextBlock Text="Username:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="25,95,160,488" Canvas.Left="0" Canvas.Top="-71" />
+                                <TextBox Margin="25,113,30,0" Name="txtUsername"  VerticalContentAlignment="Center" Style="{StaticResource TextoBoxStyle}" Width="328" Canvas.Left="0" Canvas.Top="-71">
+                                    <TextBox.Text>
+                                        <Binding Path="User_Name"/>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <TextBlock Text="Rol:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="25,379,160,204" Canvas.Left="0" Canvas.Top="-71"/>
+                                <ComboBox Margin="25,397,30,0" Name="txtRol" VerticalContentAlignment="Center" Style="{StaticResource ComboBoxStyle}" Width="328" Canvas.Left="0" Canvas.Top="-71" SelectedItem="{Binding user_Rol, Mode=TwoWay}">
+                                    <ComboBoxItem Content="Administrador" />
+                                    <ComboBoxItem Content="Operador" />
+                                </ComboBox>
+                            </Canvas>
+                        </StackPanel>
+                        <!-- Tercera Fila -->
+                        <StackPanel Orientation="Horizontal" Margin="46,456,0,127">
+                            <Button Margin="0,0,10,0" Name="btnAgregar" Style="{StaticResource BotonAgregarStyle}" Click="btnAgregar_Click" />
+                            <Button Margin="0,0,10,0" Name="btnEditar" Style="{StaticResource BotonEditarStyle}"  HorizontalAlignment="Right" Click="btnEditar_Click" />
+                            <Button Margin="0,0,10,0" Name="btnEliminar" Style="{StaticResource BotonEliminarStyle}" HorizontalAlignment="Right" Width="89" Click="btnEliminar_Click" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="35,518,-1,65">
+                            <Button Content="Salir" Margin="0,0,10,0" Name="btnSalir" HorizontalAlignment="Left" Width="100" Style="{StaticResource BotonGlobalStyle}" Click="btnSalir_Click" />
+                            <Button Content="Cancelar" Margin="0,0,10,0" Name="btnCancelar" HorizontalAlignment="Left" Width="100" Style="{StaticResource BotonGlobalStyle}" Click="btnCancelar_Click" />
+                            <Button Content="Guardar" Margin="0,0,10,0" Name="btnGuardar" Width="100" Style="{StaticResource BotonGlobalStyle}" Click="btnGuardar_Click" />
+                        </StackPanel>
+                        
+                        
+                        
+                    </Grid>
+                </Border>
+                <Border CornerRadius="0,0,10,0" Grid.Column="1" Background="#23232D">
+                    <Grid  >
+                        <!--Espacio para las tabla de datos-->
+                        <!--v2 para mostrar <DataGrid x:Name="dataGridClientes" AutoGenerateColumns="True" Height="400" Width="760"/> -->
+                        <DataGrid x:Name="dataGridUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Height="450" Width="760" Style="{StaticResource DataGridStyle}">
+                            <DataGrid.ColumnHeaderStyle>
+                                <StaticResource ResourceKey="DataGridColumnHeaderStyle"/>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding User_Id}" Width="1*"/>
+                                <DataGridTextColumn Header="Username" Binding="{Binding User_Name}" Width="1*"/>
+                                <DataGridTextColumn Header="Password" Binding="{Binding User_Password}" Width="1*"/>
+                                <DataGridTextColumn Header="Nombre" Binding="{Binding User_Nombre}" Width="1*"/>
+                                <DataGridTextColumn Header="Apellido" Binding="{Binding User_Apellido}" Width="1*"/>
+                                <DataGridTextColumn Header="Rol" Binding="{Binding User_Rol}" Width="1*"/>
+                            </DataGrid.Columns>
+                            <DataGrid.CellStyle>
+                                <StaticResource ResourceKey="DataGridCellStyle"/>
+                            </DataGrid.CellStyle>
+                        </DataGrid>
+                        <!--Botones del Form-->
+                        
+                        <TextBlock Text="Filtrado por UserName:" FontFamily="Calibri" FontSize="12" FontWeight="Medium" Foreground="DarkGray" Margin="50,35,180,569" />
+                        <TextBox Margin="50,52,180,0" Name="txtBuscar" Style="{StaticResource TextoBoxStyle}" Grid.Column="1" />
+                        <Button Margin="677,28,0,571" Name="btnBuscar" Style="{StaticResource BotonBuscarStyle}" Click="btnBuscar_Click" />
+                        <Button Margin="631,28,0,571" Name="btnActualizar" Style="{StaticResource BotonActualizarStyle}" Click="btnActualizar_Click" />
+                        <Button Content="Vista Previa de Impresion" HorizontalAlignment="Right" Margin="0,518,284,6" Name="btnVistaImpr" Style="{StaticResource BotonGlobalStyle}" Width="167" Click="btnVistaImpr_Click" />
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

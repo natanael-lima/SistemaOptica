@@ -1,0 +1,33 @@
+﻿<Window x:Class="Vistas.ImprimirVentas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ImprimirVentas" Height="700" Width="1200">
+    <StackPanel>
+        <FlowDocumentReader Height="500" Width="1100" >
+            <FlowDocument Name="DocMain" ColumnWidth="600">
+                <Paragraph>Listado de Ventas</Paragraph>
+                <BlockUIContainer>
+                    <ListView x:Name="listaVentas" ItemsSource="{Binding}" Width="Auto" Height="Auto" HorizontalContentAlignment="Stretch">
+                        <ListView.View>
+                            <GridView >
+                                <GridViewColumn Header="Zona" DisplayMemberBinding="{Binding Sec_Id.Zona_Codigo}" Width="Auto"/>
+                                <GridViewColumn Header="Sector" DisplayMemberBinding="{Binding Sec_Id.Sec_Identificador}" Width="Auto" />
+                                <GridViewColumn Header="Nro. Ticket" DisplayMemberBinding="{Binding User_Password}" Width="Auto" />
+                                <GridViewColumn Header="Fecha de Entrada" DisplayMemberBinding="{Binding T_FechaHoraEnt}" Width="Auto"/>
+                                <GridViewColumn Header="Fecha de Salida" DisplayMemberBinding="{Binding T_FechaHoraSal}" Width="Auto" />
+                                <GridViewColumn Header="Apellido" DisplayMemberBinding="{Binding Cli_Id.Cli_Apellido}" Width="Auto"/>
+                                <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Cli_Id.Cli_Nombre}" Width="Auto"/>
+                                <GridViewColumn Header="Tipo de Vehiculo" DisplayMemberBinding="{Binding Tv_Id.Tv_Descripcion}" Width="Auto"/>
+                                <GridViewColumn Header="Patente" DisplayMemberBinding="{Binding T_Patente}" Width="Auto"/>
+                                <GridViewColumn Header="Duracion" DisplayMemberBinding="{Binding T_Duracion}" Width="Auto"/>
+                                <GridViewColumn Header="Tarifa" DisplayMemberBinding="{Binding T_Tarifa}" Width="Auto"/>
+                                <GridViewColumn Header="Total" DisplayMemberBinding="{Binding T_Total}" Width="Auto"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentReader>
+        <Button Name="imprimir" Content="Impirmir" Width="200" Click="imprimir_Click" />
+    </StackPanel>
+</Window>

@@ -1,0 +1,90 @@
+﻿<Window x:Class="Vistas.FormAcercaDe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormCliente" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" Icon="./recursos/logo-ico.ico" xmlns:my="clr-namespace:Vistas">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LibreriaRecursos;component/FormStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!--Efecto Gradiante-->
+    <Border CornerRadius="10">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,2">
+                <GradientStop Color="#18161F" Offset="0"/>
+                <GradientStop Color="#09070B" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <!--Grid para Header-->
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--Grid para Header-->
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="8"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Acerca de Nosotros"
+                               Foreground="White"
+                               FontSize="20"
+                               FontFamily="Calibri"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               Margin="15,0,0,0"/>
+                <!--Minimizar Ventana-->
+                <Button x:Name="btnMinimize"
+                            Grid.Column="1"
+                            
+                            Style="{StaticResource MinimizeButtonStyle}" Click="btnMinimize_Click">
+                </Button>
+                <!--Cerrar Ventana-->
+                <Button x:Name="btnClose"                          
+                            Grid.Column="2"
+                            
+                            Style="{StaticResource CloseButtonStyle}" Click="btnClose_Click">
+                </Button>
+                
+            </Grid>
+            <!--Grid para Contenido-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <!--Columna para Form-->
+                    <ColumnDefinition Width="336*" />
+                    <!--Columna para Tabla  -->
+                    <ColumnDefinition Width="800"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <StackPanel Margin="10">
+                     <TextBlock Name="txtTitle" Foreground="White" FontSize="20" FontWeight="Bold" Margin="50,100,0,5" Text="Grupo 02 - S.S. de Jujuy" />
+                        <TextBlock Name="txtcantidad" Foreground="White" FontSize="12" FontWeight="Bold" Margin="50,15,0,5" Text="Cantidad: 6" />
+                     <TextBlock Name="txtname1" Foreground="White" FontSize="12" Margin="50,15,0,5" Text="LIMA GUTIERREZ, Natanael Ever" />
+                     <TextBlock Name="txtname2" Foreground="White" FontSize="12" Margin="50,15,0,5" Text="VIRREYRA RUIZ, Ayelen Raquel" />
+                     <TextBlock Name="txtname3" Foreground="White" FontSize="12" Margin="50,15,0,5" Text="GAITAN, Nahuel Maximiliano" />
+                     <TextBlock Name="txtname4" Foreground="White" FontSize="12" Margin="50,15,0,5" Text="LOTO, Mateo Ignacio" />
+                     <TextBlock Name="txtname5" Foreground="White" FontSize="12" Margin="50,15,0,5" Text="GALLARDO, Matias Joaquin" />
+                     <TextBlock Name="txtname6" Foreground="White" FontSize="12" Margin="50,15,0,5" Text="MACHICADO, Marianella Rocio Denis" />
+                     </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <MediaElement Name="mediaPlayer" LoadedBehavior="Manual" Width="600" Height="400" Margin="112,87,88,142" />
+                    <Button Content="Reproducir" Click="ReproducirVideo" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="365,0,324,106" Style="{StaticResource BotonGlobalStyle}" Width="111" />
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

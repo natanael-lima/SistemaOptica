@@ -1,0 +1,356 @@
+﻿<Window x:Class="Vistas.Estacionamiento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Vehiculos en Playa" Height="700" Width="1200" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" Icon="./recursos/logo-ico.ico" Loaded="Window_Loaded">
+
+    <Border CornerRadius="10">
+        <Border.Background>
+            <ImageBrush ImageSource="/recursos/fondo2.jpg" Stretch="UniformToFill"/>
+        </Border.Background>
+    
+        <Border CornerRadius="10" Opacity="0.87"><!--Efecto Gradiante-->
+            <!--Borde de la Ventana-->
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#24212E" Offset="0"/>
+                    <GradientStop Color="#131118" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            
+            <!--Organizacion de la grilla-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="358*" />
+                    <RowDefinition Height="169*" />
+                </Grid.RowDefinitions>
+                <!--Cabecera de la ventana-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="8"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!--Titulo de la ventana-->
+                    <TextBlock Text="Vehiculos en Playa" Foreground="DarkGray" FontSize="20" FontFamily="Calibri" Grid.Column="0" VerticalAlignment="Center" Margin="15,0,0,0"/>
+
+                    <!--Minimizar Ventana-->
+                    <Button x:Name="btnMinimize"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click"
+                            Style="{StaticResource MinimizeButtonStyle}">
+                    </Button>
+                    <!--Cerrar Login-->
+                    <Button x:Name="btnClose"                          
+                            Grid.Column="2"
+                            Click="btnClose_Click"
+                            Style="{StaticResource CloseButtonStyle}">
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <!--Columna para Form-->
+                        <ColumnDefinition Width="400*" />
+                        <!--Columna para Tabla  -->
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="400"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <!--Gestion de zona1-->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Zona 1" Foreground="DarkGray" FontSize="40" FontFamily="Calibri" VerticalAlignment="Center" Margin="124,16,128,6" />
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <!--Se hace una conxion con el ComboBox para convertir el valor seleccionado en un Brush-->
+                                    <Rectangle Name="E1" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE1" Content="E1" Margin="28,21,53,21" Background="Transparent" Click="btnE1_Click" MouseEnter="btnE1_MouseEnter"/>
+                                    <!-- <Button Name="btnE1" Content="E1" Height="43" HorizontalAlignment="Center" Margin="15,14,40,15" VerticalAlignment="Center" Width="107" Click="btnE1_Click" Background="Green" /> -->
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E6" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE6" Content="E6" Margin="28,21,53,21" Background="Transparent" Click="btnE6_Click" MouseEnter="btnE6_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E2" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE2" Content="E2" Margin="28,21,53,21" Background="Transparent" Click="btnE2_Click" MouseEnter="btnE2_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E7" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE7" Content="E7" Margin="28,21,53,21" Background="Transparent" Click="btnE7_Click" MouseEnter="btnE7_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E3" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE3" Content="E3" Margin="28,21,53,21" Background="Transparent" Click="btnE3_Click" MouseEnter="btnE3_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E8" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE8" Content="E8" Margin="28,21,53,21" Background="Transparent" Click="btnE8_Click" MouseEnter="btnE8_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E4" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE4" Content="E4" Margin="28,21,53,21" Background="Transparent" Click="btnE4_Click" MouseEnter="btnE4_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E9" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE9" Content="E9" Margin="28,21,53,21" Background="Transparent" Click="btnE9_Click" MouseEnter="btnE9_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E5" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE5" Content="E5" Margin="28,21,53,21" Background="Transparent" Click="btnE5_Click" MouseEnter="btnE5_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E10" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE10" Content="E10" Margin="28,21,53,21" Background="Transparent" Click="btnE10_Click" MouseEnter="btnE10_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <!--Gestion de sectores zona 2-->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Zona 2" Foreground="DarkGray" FontSize="40" FontFamily="Calibri" VerticalAlignment="Center" Margin="124,16,128,6" />
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E11" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE11" Content="E11" Margin="28,21,53,21" Background="Transparent" Click="btnE11_Click" MouseEnter="btnE11_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E16" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE16" Content="E16" Margin="28,21,53,21" Background="Transparent" Click="btnE16_Click" MouseEnter="btnE16_MouseEnter" />
+                                    <!--Se hace una conxion con el ComboBox para convertir el valor seleccionado en un Brush-->
+                                    <!-- <Button Name="btnE1" Content="E1" Height="43" HorizontalAlignment="Center" Margin="15,14,40,15" VerticalAlignment="Center" Width="107" Click="btnE1_Click" Background="Green" /> -->
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E12" Stroke="Black" Margin="28,21,53,21"/>            
+                                    <Button Name="btnE12" Content="E12" Margin="28,21,53,21" Background="Transparent" Click="btnE12_Click" MouseEnter="btnE12_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E17" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE17" Content="E17" Margin="28,21,53,21" Background="Transparent" Click="btnE17_Click" MouseEnter="btnE17_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E13" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE13" Content="E13" Margin="28,21,53,21" Background="Transparent" Click="btnE13_Click" MouseEnter="btnE13_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E18" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE18" Content="E18" Margin="28,21,53,21" Background="Transparent" Click="btnE18_Click" MouseEnter="btnE18_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E14" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE14" Content="E14" Margin="28,21,53,21" Background="Transparent" Click="btnE14_Click" MouseEnter="btnE14_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E19" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE19" Content="E19" Margin="28,21,53,21" Background="Transparent" Click="btnE19_Click" MouseEnter="btnE19_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E15" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE15" Content="E15" Margin="28,21,53,21" Background="Transparent" Click="btnE15_Click" MouseEnter="btnE15_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E20" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE20" Content="E20" Margin="28,21,53,21" Background="Transparent" Click="btnE20_Click" MouseEnter="btnE20_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <!--Gestion de zona3-->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Zona 3" Foreground="DarkGray" FontSize="40" FontFamily="Calibri" VerticalAlignment="Center" Margin="124,16,128,6" />
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E21" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE21" Content="E21" Margin="28,21,53,21" Background="Transparent" Click="btnE21_Click" MouseEnter="btnE21_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E26" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE26" Content="E26" Margin="28,21,53,21" Background="Transparent" Click="btnE26_Click" MouseEnter="btnE26_MouseEnter" />
+                                    <!--Se hace una conxion con el ComboBox para convertir el valor seleccionado en un Brush-->
+                                    <!-- <Button Name="btnE1" Content="E1" Height="43" HorizontalAlignment="Center" Margin="15,14,40,15" VerticalAlignment="Center" Width="107" Click="btnE1_Click" Background="Green" /> -->
+                                </Grid>
+
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E22" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE22" Content="E22" Margin="28,21,53,21" Background="Transparent" Click="btnE22_Click" MouseEnter="btnE22_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E27" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE27" Content="E27" Margin="28,21,53,21" Background="Transparent" Click="btnE27_Click" MouseEnter="btnE27_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E23" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE23" Content="E23" Margin="28,21,53,21" Background="Transparent" Click="btnE23_Click" MouseEnter="btnE23_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E28" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE28" Content="E28" Margin="28,21,53,21" Background="Transparent" Click="btnE28_Click" MouseEnter="btnE28_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E24" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE24" Content="E24" Margin="28,21,53,21" Background="Transparent" Click="btnE24_Click" MouseEnter="btnE24_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E29" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE29" Content="E29" Margin="28,21,53,21" Background="Transparent" Click="btnE29_Click" MouseEnter="btnE29_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Rectangle Name="E25" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE25" Content="E25" Margin="28,21,53,21" Background="Transparent" Click="btnE25_Click" MouseEnter="btnE25_MouseEnter" />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Name="E30" Stroke="Black" Margin="28,21,53,21"/>
+                                    <Button Name="btnE30" Content="E30" Margin="28,21,53,21" Background="Transparent" Click="btnE30_Click" MouseEnter="btnE30_MouseEnter" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+
+                </Grid>
+                    
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="40*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label Name="lblOcupado" Content="Ocupado" Foreground="DarkGray" FontSize="16" VerticalAlignment="Center" Margin="15,4,0,6" />
+                        <Rectangle Name="rect1" Height="20" Margin="128,12,928,6"  Stroke="#FFC3354B" VerticalAlignment="Center" Width="118" Fill="Red" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Label Name="lblDisponible" Content="Disponible" Foreground="DarkGray" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="15,4,0,6" />
+                        <Rectangle Name="rect2" Height="20" Margin="128,12,928,6"  Stroke="#FF8CA236" VerticalAlignment="Center" Width="118" Fill="Green"/>
+                        <Button Style="{StaticResource BotonGlobalStyle}" Name="btnSalir" Content="Salir" Height="33" VerticalAlignment="Center" Width="84" Margin="216,5,24,1" Click="btnSalir_Click" />
+                        <Button Style="{StaticResource BotonGlobalStyle}" Name="btnVerSector" Content="Sectores" Height="33" VerticalAlignment="Center" Width="122" Margin="730,5,322,1" Click="btnVerSector_Click" />
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Label Name="lblDeshabilitado" Content="Deshabilitado" Foreground="DarkGray" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="15,4,0,6" />
+                        <Rectangle Name="rect3" Height="20" Margin="128,12,928,6"  Stroke="#FFB1B1B1" VerticalAlignment="Center" Width="118" Fill="Gray" />
+                    </Grid>
+                    <Grid Grid.Row="3"></Grid>   
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+
+</Window>
